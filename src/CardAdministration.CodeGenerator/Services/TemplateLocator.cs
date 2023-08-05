@@ -8,8 +8,8 @@ public class TemplateLocator: ITemplateLocator
 {
     private readonly ILogger<TemplateLocator> _logger;
     private readonly IFileSystem _fileSystem;
-    private readonly TemplateLocatorOptions _options;
-    public TemplateLocator(ILogger<TemplateLocator> logger, IFileSystem fileSystem, IOptions<TemplateLocatorOptions> optionsAccessor)
+    private readonly CodeGeneratorOptions _options;
+    public TemplateLocator(ILogger<TemplateLocator> logger, IFileSystem fileSystem, IOptions<CodeGeneratorOptions> optionsAccessor)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _fileSystem = fileSystem ?? throw new ArgumentNullException(nameof(fileSystem));
@@ -20,7 +20,7 @@ public class TemplateLocator: ITemplateLocator
     {
         _logger.LogInformation("Get template");
 
-        return _fileSystem.File.ReadAllText(Path.Combine(_options.Directory, $"{name}.txt"));
+        return _fileSystem.File.ReadAllText(Path.Combine(_options.TemplatesDirectory, $"{name}.txt"));
     }
 
 }

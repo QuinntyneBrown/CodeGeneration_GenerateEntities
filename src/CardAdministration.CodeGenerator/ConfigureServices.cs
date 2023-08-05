@@ -8,7 +8,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ConfigureServices
 {
-    public static void AddCodeGeneratorServices(this IServiceCollection services, Action<TemplateLocatorOptions> configure){
+    public static void AddCodeGeneratorServices(this IServiceCollection services, Action<CodeGeneratorOptions> configure){
 
         services.Configure(configure);
         services.AddSingleton<IConceptualModelParser, ConceptualModelParser>();

@@ -13,9 +13,11 @@ public class RazorTemplateProcessor: RazorEngine, ITemplateProcessor
 
     public async Task<string> ProcessAsync<T>(string template, T model)
     {
-        _logger.LogInformation("DoWorkAsync");
+        _logger.LogInformation("Process template Async");
 
-        throw new NotImplementedException();
+        var compiledTemplate = await CompileAsync(template);
+
+        return await compiledTemplate.RunAsync(model);
     }
 
 }

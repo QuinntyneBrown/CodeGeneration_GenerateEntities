@@ -17,7 +17,8 @@ async Task RunAsync()
     {
         services.AddLogging();
         services.AddCodeGeneratorServices(x => {
-            x.Directory = parsedResult.Value.TemplateDirectory;
+            x.TemplatesDirectory = parsedResult.Value.TemplateDirectory;
+            x.OutputDirectory = parsedResult.Value.OutputDirectory;
         });
     }).Build();
 

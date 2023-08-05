@@ -1,6 +1,7 @@
 ﻿namespace CardAdministration.CodeGenerator.Services;
 
-public class TemplateLocatorOptions
+public class CodeGeneratorOptions
 {
-    public required string Directory { get; set; }
+    public required string TemplatesDirectory { get; set; }
+    public required string OutputDirectory { get; set; }
 }
