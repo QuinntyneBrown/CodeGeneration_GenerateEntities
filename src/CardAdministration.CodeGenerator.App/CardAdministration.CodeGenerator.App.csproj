@@ -11,4 +11,9 @@
     <ProjectReference Include="..\CardAdministration.CodeGenerator\CardAdministration.CodeGenerator.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+  </ItemGroup>
+
 </Project>
