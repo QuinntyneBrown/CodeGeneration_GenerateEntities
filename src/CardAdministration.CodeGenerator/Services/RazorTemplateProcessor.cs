@@ -1,7 +1,5 @@
 using Microsoft.Extensions.Logging;
 using RazorEngineCore;
-using System;
-using System.Threading.Tasks;
 
 namespace CardAdministration.CodeGenerator.Services;
 
@@ -13,7 +11,7 @@ public class RazorTemplateProcessor: RazorEngine, ITemplateProcessor
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public async Task<string> ProcessAsync<T>(T model)
+    public async Task<string> ProcessAsync<T>(string template, T model)
     {
         _logger.LogInformation("DoWorkAsync");
 

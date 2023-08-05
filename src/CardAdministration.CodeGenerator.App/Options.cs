@@ -8,8 +8,8 @@ public class Options
     public required string Path { get; set; }
 
     [Option('o')]
-    public required string OutputDirectory { get; set; } = "C:\\projects\\CodeGeneration_GenerateEntities\\src\\CardAdministration.Core\\";
+    public required string OutputDirectory { get; set; } = "..\\..\\..\\..\\CardAdministration.CodeGenerator.Core\\";
 
     [Option('t')]
-    public required string TemplateDirectory { get; set; } = "C:\\projects\\CodeGeneration_GenerateEntities\\src\\CardAdministration.CodeGenerator\\Templates\\";
+    public required string TemplateDirectory { get; set; } = "..\\..\\..\\..\\CardAdministration.CodeGenerator\\Templates\\";
 }

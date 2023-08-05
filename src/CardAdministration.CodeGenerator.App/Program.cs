@@ -10,10 +10,15 @@ await RunAsync();
 
 async Task RunAsync()
 {
+    var parsedResult = _createParser().ParseArguments<Options>(args);
+
+
     var host = Host.CreateDefaultBuilder().ConfigureServices(services =>
     {
         services.AddLogging();
-        services.AddCodeGeneratorServices();
+        services.AddCodeGeneratorServices(x => {
+            x.Directory = parsedResult.Value.TemplateDirectory;
+        });
     }).Build();
 
     var parser = host.Services.GetRequiredService<IConceptualModelParser>();
@@ -22,13 +27,11 @@ async Task RunAsync()
 
     var fileFactory = host.Services.GetRequiredService<IFileFactory>();
 
-    var parsedResult = _createParser().ParseArguments<Options>(args);
-
     var model = await parser.ParseAsync(parsedResult.Value.Path);
 
     foreach (var simpleType in model.SimpleTypes)
     {
-        var fileModel = await fileFactory.CreateSimpleType(simpleType, parsedResult.Value.Directory);
+        var fileModel = await fileFactory.CreateSimpleType(simpleType, parsedResult.Value.OutputDirectory);
 
         await generator.GenerateAsync(fileModel);
     }
