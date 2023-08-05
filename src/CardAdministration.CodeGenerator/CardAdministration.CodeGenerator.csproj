@@ -13,4 +13,8 @@
     <PackageReference Include="System.IO.Abstractions" Version="19.2.51" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Templates\" />
+  </ItemGroup>
+
 </Project>

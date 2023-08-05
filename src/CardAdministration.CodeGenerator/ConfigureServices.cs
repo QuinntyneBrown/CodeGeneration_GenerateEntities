@@ -16,6 +16,7 @@ public static class ConfigureServices
         services.AddSingleton<IFileSystem, FileSystem>();
         services.AddSingleton<IFileFactory, FileFactory>();
         services.AddSingleton<ITemplateProcessor, RazorTemplateProcessor>();
+        services.AddSingleton<ITemplateLocator, TemplateLocator>();
     }
 
 }
