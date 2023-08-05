@@ -13,9 +13,11 @@ public class RazorTemplateProcessor: RazorEngine, ITemplateProcessor
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public async Task DoWorkAsync()
+    public async Task<string> ProcessAsync<T>(T model)
     {
         _logger.LogInformation("DoWorkAsync");
+
+        throw new NotImplementedException();
     }
 
 }
