@@ -26,23 +26,24 @@ public class ConceptualModelParser: IConceptualModelParser
 
             XNamespace ns = "http://www.w3.org/2001/XMLSchema";
 
-            IEnumerable<XElement> simpleTypes = from el in root.Elements()
-                                                where el.Name == ns + "simpleType"
-                                                select el;
-
-            foreach (var simpleType in simpleTypes)
+            foreach (var type in from el in root.Elements()
+                                       where el.Name == ns + "simpleType"
+                                       select el)
             {
-                
-                try
+
+                model.SimpleTypes.Add(new SimpleType()
                 {
-                    model.SimpleTypes.Add(new SimpleType()
-                    {
-                        Name = simpleType.Attribute("name").Value
-                    });
-                }
-                catch { 
-                
-                }
+                    Name = type.Attribute("name").Value
+                });
+
+            }
+
+            foreach (var type in from el in root.Elements()
+                                 where el.Name == ns + "complexType"
+                                 select el)
+            {
+
+                model.ComplexTypes.Add(new ComplexType(type.Attribute("name")!.Value));
 
             }
         }

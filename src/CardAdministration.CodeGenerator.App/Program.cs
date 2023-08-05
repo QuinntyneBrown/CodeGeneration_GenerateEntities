@@ -30,9 +30,16 @@ async Task RunAsync()
 
     var model = await parser.ParseAsync(parsedResult.Value.Path);
 
-    foreach (var simpleType in model.SimpleTypes)
+    foreach (var type in model.SimpleTypes)
     {
-        var fileModel = await fileFactory.CreateSimpleType(simpleType, parsedResult.Value.OutputDirectory);
+        var fileModel = await fileFactory.CreateSimpleType(type, parsedResult.Value.OutputDirectory);
+
+        await generator.GenerateAsync(fileModel);
+    }
+
+    foreach (var type in model.ComplexTypes)
+    {
+        var fileModel = await fileFactory.CreateComplexType(type, parsedResult.Value.OutputDirectory);
 
         await generator.GenerateAsync(fileModel);
     }

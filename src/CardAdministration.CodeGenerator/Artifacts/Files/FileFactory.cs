@@ -11,9 +11,16 @@ public class FileFactory: IFileFactory
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public async Task<ClassModel> CreateSimpleType(SimpleType simpleType, string directory)
+    public async Task<ClassModel> CreateSimpleType(SimpleType type, string directory)
     {
-        var model = new ClassModel(simpleType.Name, directory);
+        var model = new ClassModel(type.Name, directory);
+
+        return model;
+    }
+
+    public async Task<ClassModel> CreateComplexType(ComplexType type, string directory)
+    {
+        var model = new ClassModel(type.Name, directory);
 
         return model;
     }

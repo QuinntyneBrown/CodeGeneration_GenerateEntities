@@ -4,7 +4,9 @@ namespace CardAdministration.CodeGenerator.Artifacts.Files;
 
 public interface IFileFactory
 {
-    Task<ClassModel> CreateSimpleType(SimpleType simpleType, string directory);
+    Task<ClassModel> CreateSimpleType(SimpleType type, string directory);
+
+    Task<ClassModel> CreateComplexType(ComplexType type, string directory);
 
 }
 
